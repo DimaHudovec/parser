@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class FileParse {
+public class FileParse extends Parser {
     private final String REGEX = "[\\\"]{1}[A-Za-z0-9]{1,}[\\\"]{1}[\\=]{1}[\\\"]{1}[A-Za-z0-9]{1,}[\\\"]{1}";
     private final String ERROR_FILE = "file_err.txt";
     private final String OUT_FILE = "file_out.txt";
@@ -19,7 +19,7 @@ public class FileParse {
         eFile = new FileWrite();
     }
 
-    public void fileOperation(String patch) {
+    public void start(String patch) {
         oFile.open(OUT_FILE);
         eFile.open(ERROR_FILE);
         try {

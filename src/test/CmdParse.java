@@ -2,7 +2,7 @@ package test;
 
 import java.io.*;
 
-public class CmdParse {
+public class CmdParse extends Parser{
     private final String ERROR_FILE = "cmd_err.txt";
     private final String OUT_FILE = "cmd_out.txt";
     private FileWrite oFile, eFile;
@@ -12,7 +12,7 @@ public class CmdParse {
         eFile = new FileWrite();
     }
 
-    public void cmdOperation(String command){
+    public void start(String command){
         Command cmd = new Command();
         oFile.open(OUT_FILE);
         eFile.open(ERROR_FILE);

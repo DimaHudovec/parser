@@ -3,7 +3,7 @@ package test;
 import java.io.*;
 import java.util.List;
 
-public class ReqParse {
+public class ReqParse extends Parser {
     private final String ERROR_FILE = "reg_err.txt";
     private final String OUT_FILE = "reg_out.txt";
     private FileWrite oFile, eFile;
@@ -26,7 +26,7 @@ public class ReqParse {
             }
         }
 
-    public void regOperation(String location){
+    public void start(String location){
         Command cmd = new Command();
         oFile.open(OUT_FILE);
         eFile.open(ERROR_FILE);
