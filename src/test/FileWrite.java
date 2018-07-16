@@ -7,18 +7,18 @@ import java.util.List;
  * Created by MPI on 16.07.2018.
  */
 public class FileWrite {
-    private BufferedWriter bw;
+    private FileOutputStream outputStream;
     public void open(String filename){
         try {
-            bw = new BufferedWriter(new FileWriter(new File(filename), true));
-        } catch (IOException e) {
+            outputStream = new FileOutputStream(filename, true);
+        } catch (FileNotFoundException e) {
             System.out.println("Cannot create file");
             e.printStackTrace();
         }
     }
     public void write(String str){
         try {
-            bw.write(str);
+            outputStream.write(str.getBytes());
         } catch (IOException e) {
             System.out.println("Cannot write to file");
             e.printStackTrace();
@@ -28,7 +28,7 @@ public class FileWrite {
     public void write(List<String> strList){
         try {
             for (String s: strList) {
-                bw.write(s);
+                outputStream.write(s.getBytes());
             }
         } catch (IOException e) {
             System.out.println("Cannot write to file");
@@ -37,9 +37,9 @@ public class FileWrite {
     }
 
     public void close(){
-        if (bw != null) {
+        if (outputStream != null) {
             try {
-                bw.close();
+                outputStream.close();
             } catch (IOException e) {
                 System.out.println("Cannot close file");
                 e.printStackTrace();
